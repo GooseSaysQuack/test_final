@@ -21,14 +21,14 @@ from market.views import AuthorAPIView, BookListAPIView, GenreAPIView
 
 
 router = DefaultRouter()
-# router.register(r"book", BookViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include ('market.urls')),
-    path('api/v1/books/', BookListAPIView.as_view()),
-    path('api/v1/authors/', AuthorAPIView.as_view()),
-    path('api/v1/genres/', GenreAPIView.as_view()),
+    # path('api/', include('market.urls')),
+    path('api/v1/books/', BookListAPIView.as_view(), name='books-url'),
+    path('api/v1/authors/', AuthorAPIView.as_view(), name='authors-url'),
+    path('api/v1/genres/', GenreAPIView.as_view(), name='genres-url'),
 ]
 
 urlpatterns += router.urls

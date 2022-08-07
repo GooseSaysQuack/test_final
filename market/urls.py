@@ -8,7 +8,7 @@ router = DefaultRouter()
 # router.register('book', BookViewSet)
 router.register(r'book', BookListAPIView, basename='book')
 router.register(r'author', AuthorAPIView, basename='author')
-router.register('genre', GenreAPIView, basename='genre')
+router.register(r'genre', GenreAPIView, basename='genre')
 
 urlpatterns = []
 
