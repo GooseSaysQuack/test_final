@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'market',
     'rest_framework',
+    'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'djoser',
     'drf_yasg',
