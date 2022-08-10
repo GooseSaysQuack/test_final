@@ -1,4 +1,3 @@
-from distutils.command.upload import upload
 from django.db import models
 
 
@@ -36,7 +35,7 @@ class Book(models.Model):
     publication_date = models.CharField(max_length=15)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     oblojka = models.ImageField(
-        upload_to='internet_shop/shop/media/',
+        upload_to='final_project/shop/media/',
         null=True, blank=True)
 
     def __str__(self):

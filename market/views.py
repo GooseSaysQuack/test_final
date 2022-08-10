@@ -12,7 +12,6 @@ class BookListAPIView(APIView):
         serializer = BookSerializer(instance=book_qs, many=True)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
-
 class AuthorAPIView(APIView):
     def get(self, request):
         author_qs = Author.objects.all()
@@ -25,3 +24,4 @@ class GenreAPIView(APIView):
         genre_qs = Genre.objects.all()
         serializer = GenreSerializer(instance=genre_qs, many=True)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
+    

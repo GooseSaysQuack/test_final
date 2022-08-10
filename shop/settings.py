@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'market',
     'rest_framework',
-    'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'djoser',
     'drf_yasg',
@@ -134,5 +133,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = 'internet_shop/shop/media/'
-MEDIA_ROOT = BASE_DIR / 'internet_shop/shop/media/'
+MEDIA_URL = 'final_project/shop/media/'
+MEDIA_ROOT = BASE_DIR / 'final_project/shop/media/'
