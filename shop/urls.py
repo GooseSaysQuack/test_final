@@ -15,13 +15,17 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, include, re_path,
 from rest_framework.routers import DefaultRouter
 from market.views import AuthorAPIView, BookListAPIView, GenreAPIView
 from rest_framework_swagger.views import get_swagger_view
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
+from . import settings
+from django.views.static import serve
+from django.conf.urls.static import static
+
 
 
 router = DefaultRouter()
@@ -55,5 +59,12 @@ urlpatterns = [
 ]
 
 scheme_view = get_swagger_view(title='Pastebin API')
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    urlpatterns += re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    urlpatterns += re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT})
 
 urlpatterns += router.urls
