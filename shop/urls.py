@@ -26,6 +26,7 @@ from rest_framework import permissions
 
 router = DefaultRouter()
 
+#Swagger
 schema_view = get_schema_view(
    openapi.Info(
       title="Books API",
@@ -40,12 +41,14 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    #Авторизация и ссылки на json авторов, списка книг и жанров
     path('admin/', admin.site.urls),
     path('api/v1/books/', BookListAPIView.as_view(), name='books-url'),
     path('api/v1/authors/', AuthorAPIView.as_view(), name='authors-url'),
     path('api/v1/genres/', GenreAPIView.as_view(), name='genres-url'),
     path('api/v1/auth/', include('djoser.urls')),
     re_path(r'^auth/', include ('djoser.urls.authtoken')),
+    #Swagger
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

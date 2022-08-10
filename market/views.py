@@ -5,6 +5,7 @@ from market.models import Author, Book, Genre
 from market.serializers import BookSerializer, AuthorSerializer, GenreSerializer
 
 
+#Вьюшка списка книг
 class BookListAPIView(APIView):
 
     def get(self, request):
@@ -12,6 +13,8 @@ class BookListAPIView(APIView):
         serializer = BookSerializer(instance=book_qs, many=True)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
+
+#Вьюшка авторов
 class AuthorAPIView(APIView):
     def get(self, request):
         author_qs = Author.objects.all()
@@ -19,6 +22,7 @@ class AuthorAPIView(APIView):
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 
+#Вьюшка жанров
 class GenreAPIView(APIView):
     def get(self, request):
         genre_qs = Genre.objects.all()
