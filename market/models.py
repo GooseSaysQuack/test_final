@@ -1,5 +1,6 @@
 from django.db import models
 
+URL = 'https://285d-212-112-122-214.in.ngrok.io'
 
 # Модель автора
 class Author(models.Model):
@@ -35,12 +36,16 @@ class Book(models.Model):
     publication_date = models.CharField(max_length=15)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     oblojka = models.ImageField(
-        upload_to='final_project/shop/media/',
+        upload_to='books/',
         null=True, blank=True)
 
     def __str__(self):
         return f'{self.name} {self.price} {self.title} {self.authors} {self.publication_date} {self.genre} {self.oblojka}'
 
+    @property
+    def image_url(self):
+        return URL + self.oblojka.url
+    
     class Meta:
         verbose_name = 'Книга'
         verbose_name_plural = 'Книги'

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ii)t(w#vlqvf7qi(3a$@-g#0==1+@hb9#=p4&4k%5hji6)0pw#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['285d-212-112-122-214.in.ngrok.io', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,17 +55,33 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django.middleware.security.SecurityMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
-
+# CORS_ORIGIN_WHITELIST = ('http://localhost:8000', 'http://localhost:3000', 'https://habr.com', 'http://habr.com')
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    'https://9ed6-212-42-120-155.in.ngrok.io',
+    'http://localhost:8000',
+]
 ROOT_URLCONF = 'shop.urls'
 
 TEMPLATES = [
@@ -141,5 +157,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = 'final_project/shop/media/'
-MEDIA_ROOT = BASE_DIR / 'final_project/shop/media/'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'shop/media/books/')

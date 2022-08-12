@@ -1,3 +1,4 @@
+from unicodedata import category
 from rest_framework import serializers
 from market.models import (
     Book, Author, Genre
@@ -8,7 +9,7 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ('id', 'name', 'price', 'title', 'authors',
-                  'publication_date', 'genre', 'oblojka')
+                  'publication_date', 'genre', 'image_url')
 
 
 #Сериализатор авторов
